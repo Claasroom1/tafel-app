@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<title>Tafel-App</title>
+<meta name="theme-color" content="#5b5bd6">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="app/icons/icon-192.png">
+<link rel="stylesheet" href="app/tafel.css">
+</head>
+<body>
+<canvas id="cMain"></canvas>
+<canvas id="cLive"></canvas>
+<canvas id="cOver"></canvas>
+
+<div id="topbar">
+  <button class="tb" id="bArchiv" title="Tafeln öffnen und verwalten">📁 Tafeln</button>
+  <input id="titel" spellcheck="false" title="Titel der Tafel">
+  <button class="badge" id="ablageInfo" title="Lehrkraft, Fach und Datum ändern"></button>
+  <span class="spacer"></span>
+  <span id="status"></span>
+  <span id="stiftInfo" title="Was zuletzt auf die Tafel getippt hat"></span>
+  <button class="tb" id="bSave" title="Speichern (Strg+S)">💾 Speichern</button>
+  <button class="tb" id="bExport" title="Als PNG oder PDF exportieren">⤓ Export</button>
+  <button class="tb" id="bNotizen" title="Notizfeld öffnen/schließen: Notizen, Regeln, Störungen" onclick="T.toggleNotizen()">📝 Notizen</button>
+  <button class="tb" id="bKlasse" title="Classroom: Vorhang, Phasentimer, Timer, Zufall, Würfel">🎒 Classroom</button>
+  <button class="tb" id="bThema" title="Hell / Dunkel / Automatisch">🌓</button>
+  <button class="tb" id="bSettings" title="Einstellungen">⚙</button>
+  <button class="tb" id="bFull" title="Vollbild">⛶</button>
+</div>
+
+<div id="dock"></div>
+<div id="toolbar"></div>
+<div id="selbar"></div>
+<div id="nav">
+  <button id="navAlles" title="Alles zeigen: zoomt so, dass alles auf dieser Seite sichtbar ist">⤢</button>
+  <button id="navPlus" title="Hineinzoomen">＋</button>
+  <button id="zoomInfo" title="Zoom – antippen: 100 %">100 %</button>
+  <button id="navMinus" title="Herauszoomen">−</button>
+  <button id="navHome" title="Zum Anfang der Seite (100 %)">⌂</button>
+</div>
+<div id="pop" class="pop"></div>
+<div id="modal"><div class="dlg" id="dlg"></div></div>
+<div id="archiv"></div>
+<div id="toast"></div>
+<div id="wisch"></div>
+<div id="druck"></div>
+
+<script src="app/kern.js"></script>
+<script src="app/werkzeuge.js"></script>
+<script src="app/eingabe.js"></script>
+<script src="app/bausteine.js"></script>
+<script src="app/karten.js"></script>
+<script src="app/flexibel.js"></script>
+<script src="app/karten2.js"></script>
+<script src="app/speicher.js"></script>
+<script src="app/aufgaben.js"></script>
+<script src="app/oberflaeche.js"></script>
+<script src="app/notizen.js"></script>
+<script src="app/rechner.js"></script>
+<script src="app/classroom.js"></script>
+<script src="app/plotter.js"></script>
+<script src="app/uebungen.js"></script>
+<script>
+  // Installierbar/offline nur, wenn die App über eine Web-Adresse läuft (nicht beim Öffnen als Datei)
+  if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) navigator.serviceWorker.register('sw.js').catch(() => {});
+</script>
+</body>
+</html>
